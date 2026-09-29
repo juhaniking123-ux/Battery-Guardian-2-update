@@ -73,3 +73,5 @@ jobs:
           git add apk/Battery_Guardian_2_v2.0.7.apk update.json
           git commit -m "Publish Battery Guardian 2 v2.0.7 OTA" || exit 0
           git push
+
+# trigger ota build
