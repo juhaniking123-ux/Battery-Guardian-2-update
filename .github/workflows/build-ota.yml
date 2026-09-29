@@ -3,7 +3,7 @@ name: Build Battery Guardian OTA
 on:
   push:
     paths:
-      - 'source/bg207_min.zip'
+      - 'source/bg208_min.zip'
       - '.github/workflows/build-ota.yml'
   workflow_dispatch:
 
@@ -40,7 +40,7 @@ jobs:
         run: |
           rm -rf work
           mkdir -p work
-          unzip -q source/bg207_min.zip -d work
+          unzip -q source/bg208_min.zip -d work
 
       - name: Build signed release APK
         working-directory: work
@@ -51,27 +51,25 @@ jobs:
         run: |
           set -e
           mkdir -p apk
-          cp work/app/build/outputs/apk/release/app-release.apk apk/Battery_Guardian_2_v2.0.7.apk
-          SHA=$(sha256sum apk/Battery_Guardian_2_v2.0.7.apk | awk '{print $1}')
+          cp work/app/build/outputs/apk/release/app-release.apk apk/Battery_Guardian_2_v2.0.8.apk
+          SHA=$(sha256sum apk/Battery_Guardian_2_v2.0.8.apk | awk '{print $1}')
           cat > update.json <<EOF
           {
-            "versionCode": 20007,
-            "versionName": "2.0.7",
-            "title": "Battery Guardian 2 v2.0.7 업데이트",
+            "versionCode": 20008,
+            "versionName": "2.0.8",
+            "title": "Battery Guardian 2 v2.0.8 업데이트",
             "notes": [
-              "백그라운드 제한 내용을 앱별로 더 자세히 표시",
-              "이미 제한한 앱은 반복 제한하지 않고 현재 상태를 유지",
-              "강한 제한과 일반 제한을 구분하고 보호 앱은 제외"
+              "백그라운드 제한을 명령 실행 후 실제 상태까지 다시 확인",
+              "권한 거부/명령 미지원/Shizuku 오류 등 실패 원인을 상세 표시",
+              "자동 실험 종료 후 테스트 완료 상태와 결과를 확인할 때까지 유지"
             ],
-            "apkUrl": "https://raw.githubusercontent.com/juhaniking123-ux/Battery-Guardian-2-update/main/apk/Battery_Guardian_2_v2.0.7.apk",
+            "apkUrl": "https://raw.githubusercontent.com/juhaniking123-ux/Battery-Guardian-2-update/main/apk/Battery_Guardian_2_v2.0.8.apk",
             "sha256": "$SHA",
             "rulesUrl": ""
           }
           EOF
           git config user.name "battery-guardian-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add apk/Battery_Guardian_2_v2.0.7.apk update.json
-          git commit -m "Publish Battery Guardian 2 v2.0.7 OTA" || exit 0
+          git add apk/Battery_Guardian_2_v2.0.8.apk update.json
+          git commit -m "Publish Battery Guardian 2 v2.0.8 OTA" || exit 0
           git push
-
-# trigger ota build 2
