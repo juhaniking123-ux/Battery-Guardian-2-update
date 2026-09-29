@@ -1,13 +1,13 @@
 {
-  "versionCode": 20005,
-  "versionName": "2.0.5",
-  "title": "Battery Guardian 2 업데이트",
+  "versionCode": 20007,
+  "versionName": "2.0.7",
+  "title": "Battery Guardian 2 v2.0.7 업데이트",
   "notes": [
-    "배터리 변화 자동 감지",
-    "반복 이상 변화 시 업데이트 자동 확인",
-    "업데이트 확인 버튼 저장 팝업 수정"
+    "백그라운드 제한 내용을 앱별로 더 자세히 표시",
+    "이미 제한한 앱은 반복 제한하지 않고 현재 상태를 유지",
+    "강한 제한과 일반 제한을 구분하고 보호 앱은 제외"
   ],
-  "apkUrl": "",
-  "sha256": "",
+  "apkUrl": "https://raw.githubusercontent.com/juhaniking123-ux/Battery-Guardian-2-update/main/apk/Battery_Guardian_2_v2.0.7.apk",
+  "sha256": "2a317d9391d65ef8e013c0f15f3162ff93243bc6240a656c6d99980dbf803aaf",
   "rulesUrl": ""
 }
