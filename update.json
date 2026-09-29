@@ -1,0 +1,13 @@
+{
+  "versionCode": 20005,
+  "versionName": "2.0.5",
+  "title": "Battery Guardian 2 업데이트",
+  "notes": [
+    "배터리 변화 자동 감지",
+    "반복 이상 변화 시 업데이트 자동 확인",
+    "업데이트 확인 버튼 저장 팝업 수정"
+  ],
+  "apkUrl": "",
+  "sha256": "",
+  "rulesUrl": ""
+}
