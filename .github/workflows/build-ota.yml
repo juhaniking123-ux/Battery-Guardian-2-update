@@ -73,4 +73,5 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           git add apk/Battery_Guardian_2_v2.0.8.apk update.json
           git commit -m "Publish Battery Guardian 2 v2.0.8 OTA" || exit 0
+          git pull --rebase origin main
           git push
