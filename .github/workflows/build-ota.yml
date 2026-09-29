@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'source/bg208_min.zip'
+      - 'source/trigger-v208.txt'
       - '.github/workflows/build-ota.yml'
   workflow_dispatch:
 
