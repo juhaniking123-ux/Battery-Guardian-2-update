@@ -5,7 +5,8 @@
   "notes": [
     "백그라운드 제한을 명령 실행 후 실제 상태까지 다시 확인",
     "권한 거부/명령 미지원/Shizuku 오류 등 실패 원인을 상세 표시",
-    "7일 기본 학습 진행률과 남은 기간/퍼센트를 메인 화면에 표시",\n              "7일 완료 후 지속 학습 상태를 표시"
+    "7일 기본 학습 진행률과 남은 기간/퍼센트를 메인 화면에 표시",
+    "7일 완료 후 지속 학습 상태를 표시"
   ],
   "apkUrl": "https://raw.githubusercontent.com/juhaniking123-ux/Battery-Guardian-2-update/main/apk/Battery_Guardian_2_v2.0.9.apk",
   "sha256": "0f8dac1ed46961525d41cc2fc358bfc28eea708b78705a343d0c8255e9c07228",
