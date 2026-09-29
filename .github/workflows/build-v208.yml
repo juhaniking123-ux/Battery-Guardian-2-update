@@ -1,45 +1,84 @@
-name: Build Battery Guardian 2 v2.0.8
+name: Build Battery Guardian v2.0.8
 
 on:
   push:
+    branches: [ main ]
     paths:
-      - 'source/v208.zip'
       - '.github/workflows/build-v208.yml'
+      - 'ci/v208/**'
   workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Rebuild source archive
+        shell: bash
+        run: |
+          cat \
+            ci/v208/source.part00 \
+            ci/v208/source.part01 \
+            ci/v208/source.part02 \
+            ci/v208/source.part03a \
+            ci/v208/source.part03b \
+            ci/v208/source.part03c0 \
+            ci/v208/source.part03c1 \
+            ci/v208/source.part03c20 \
+            ci/v208/source.part03c211 \
+            ci/v208/source.part04a \
+            ci/v208/source.part04b \
+            ci/v208/source.part04c \
+            > /tmp/bg208.b64
+          tr -d '[:space:]' < /tmp/bg208.b64 | base64 -d > /tmp/bg208.zip
+          unzip -t /tmp/bg208.zip
+          mkdir -p /tmp/work
+          unzip -q /tmp/bg208.zip -d /tmp/work
+          test -f /tmp/work/bg208_ci/app/build.gradle
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '17'
-      - name: Setup Android command line tools
-        run: |
-          mkdir -p "$HOME/android-sdk/cmdline-tools"
-          curl -fsSL -o /tmp/cmdtools.zip https://dl.google.com/android/repository/commandlinetools-linux-15859902_latest.zip
-          unzip -q /tmp/cmdtools.zip -d "$HOME/android-sdk/cmdline-tools"
-          mv "$HOME/android-sdk/cmdline-tools/cmdline-tools" "$HOME/android-sdk/cmdline-tools/latest"
-          echo "ANDROID_HOME=$HOME/android-sdk" >> "$GITHUB_ENV"
-          echo "ANDROID_SDK_ROOT=$HOME/android-sdk" >> "$GITHUB_ENV"
-          echo "$HOME/android-sdk/cmdline-tools/latest/bin" >> "$GITHUB_PATH"
-          echo "$HOME/android-sdk/platform-tools" >> "$GITHUB_PATH"
-      - name: Install Android SDK 36
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android SDK packages
+        shell: bash
         run: |
           yes | sdkmanager --licenses >/dev/null || true
-          sdkmanager 'platform-tools' 'platforms;android-36' 'build-tools;36.0.0'
-      - uses: gradle/actions/setup-gradle@v4
+          sdkmanager "platforms;android-36" "build-tools;35.0.0"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.11.1'
-      - name: Extract source
-        run: unzip -q source/v208.zip
-      - name: Build unsigned release APK
-        run: gradle -p bg208_ci --no-daemon clean assembleRelease
-      - name: Upload unsigned APK
+
+      - name: Build release APK
+        working-directory: /tmp/work/bg208_ci
+        run: gradle --no-daemon :app:assembleRelease
+
+      - name: Collect output
+        shell: bash
+        run: |
+          mkdir -p /tmp/out
+          APK=$(find /tmp/work/bg208_ci/app/build/outputs/apk/release -name '*.apk' | head -1)
+          test -n "$APK"
+          cp "$APK" /tmp/out/Battery_Guardian_2_v2.0.8-unsigned.apk
+          BT=$(find "$ANDROID_HOME/build-tools" -maxdepth 1 -mindepth 1 -type d | sort -V | tail -1)
+          cp "$BT/lib/apksigner.jar" /tmp/out/apksigner.jar
+          ls -lh /tmp/out
+
+      - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: Battery_Guardian_2_v2.0.8_unsigned
-          path: bg208_ci/app/build/outputs/apk/release/app-release-unsigned.apk
-          if-no-files-found: error
+          name: bg208-build
+          path: /tmp/out/*
+          retention-days: 1
