@@ -1,14 +1,14 @@
 {
-  "versionCode": 20009,
-  "versionName": "2.0.9",
-  "title": "Battery Guardian 2 v2.0.9 업데이트",
+  "versionCode": 20010,
+  "versionName": "2.0.10",
+  "title": "Battery Guardian 2 v2.0.10 업데이트",
   "notes": [
-    "백그라운드 제한을 명령 실행 후 실제 상태까지 다시 확인",
-    "권한 거부/명령 미지원/Shizuku 오류 등 실패 원인을 상세 표시",
-    "7일 기본 학습 진행률과 남은 기간/퍼센트를 메인 화면에 표시",
-    "7일 완료 후 지속 학습 상태를 표시"
+    "화면이 꺼졌을 때 카카오톡 알림이 막히지 않도록 알림 필수 앱 제한 자동 복구",
+    "카카오톡·Google Play 서비스·삼성 Push 등 알림 핵심 앱을 영구 보호 대상에 추가",
+    "이전 버전에서 남은 Standby/AppOps/Wake Lock 제한을 업데이트 후 자동 해제",
+    "7일 학습 진행률 및 지속 학습 표시는 그대로 유지"
   ],
-  "apkUrl": "https://raw.githubusercontent.com/juhaniking123-ux/Battery-Guardian-2-update/main/apk/Battery_Guardian_2_v2.0.9.apk",
-  "sha256": "9c5bcc7ae7252035b304d2c78af763568946884942eae62cb60ca907492c481a",
+  "apkUrl": "https://raw.githubusercontent.com/juhaniking123-ux/Battery-Guardian-2-update/main/apk/Battery_Guardian_2_v2.0.10.apk",
+  "sha256": "b5899725588bf2fb9a1da8bdca435c93bd3a63aa66c94ec59f0204eda843ff03",
   "rulesUrl": ""
 }
