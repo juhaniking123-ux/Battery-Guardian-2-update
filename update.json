@@ -1,14 +1,14 @@
 {
-  "versionCode": 20011,
-  "versionName": "2.0.11",
-  "title": "Battery Guardian 2 v2.0.11 업데이트",
+  "versionCode": 20012,
+  "versionName": "2.0.12",
+  "title": "Battery Guardian 2 v2.0.12 발열/대기 최적화",
   "notes": [
-    "Guardian 적용 설정 전체 원상복구 기능 추가",
-    "1시간 화면 OFF 대기 테스트와 시간당 배터리 소모율 표시",
-    "카카오톡 등 알림 필수 앱 보호 유지",
-    "7일 학습 데이터와 기존 설정 유지"
+    "5분마다 실행되던 알림 앱 설정 변경 명령 제거",
+    "백그라운드 자동 관리를 충전 중 휴대폰 대기 시 작업으로 변경",
+    "7일 관찰 완료와 절감 효과 측정 상태를 정확하게 구분",
+    "기존 설정, 앱 보호 목록, 실험 기록 유지"
   ],
-  "apkUrl": "https://raw.githubusercontent.com/juhaniking123-ux/Battery-Guardian-2-update/main/apk/Battery_Guardian_2_v2.0.11.apk",
-  "sha256": "0f4f25a28b27952e4d1f3f22c402a6a3d88538e191b2dafe3afcf267a044b7c4",
+  "apkUrl": "https://raw.githubusercontent.com/juhaniking123-ux/Battery-Guardian-2-update/main/apk/Battery_Guardian_2_v2.0.12.apk",
+  "sha256": "40908e665c463b443578f53c8e28dc784b6375a144d6b1911aa5d06aab1dfe39",
   "rulesUrl": ""
 }
