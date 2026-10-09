@@ -46,8 +46,8 @@ change("MainActivity.java",
 
 change("MainActivity.java",'"실제 절감 효과: 아직 학습 중"','"실제 절감 효과: 아직 측정 결과 없음"')
 change("MainActivity.java",
-'''            return "학습 진행: 7일 / 7일 · 100% 완료 ✓\n현재 상태: 지속 학습 중 · 사용 패턴 변화 반영 중";''',
-'''            return "초기 관찰 기간: 7일 / 7일 · 100% 완료 ✓\n현재 상태: 완료 · 자동 관리는 충전/대기 중 저빈도로 실행";''')
+'''            return "학습 진행: 7일 / 7일 · 100% 완료 ✓\\n현재 상태: 지속 학습 중 · 사용 패턴 변화 반영 중";''',
+'''            return "초기 관찰 기간: 7일 / 7일 · 100% 완료 ✓\\n현재 상태: 완료 · 자동 관리는 충전/대기 중 저빈도로 실행";''')
 change("MainActivity.java","Battery Guardian 2  ·  v2.0.11  ·  Rule Engine 2","Battery Guardian 2  ·  v2.0.12  ·  Rule Engine 2")
 
 change("BootReceiver.java",
